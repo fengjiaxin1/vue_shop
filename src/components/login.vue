@@ -26,7 +26,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item id="btn">
-          <el-button type="primary">立即创建</el-button>
+          <el-button type="primary" @click="Login">登录</el-button>
           <el-button type="info" @click="loginFormRef">重置</el-button>
         </el-form-item>
       </el-form>
@@ -66,10 +66,30 @@ export default {
       },
     };
   },
-  methods:{
-      loginFormRef(){
-         this.$refs.loginFormRef.resetFields();
-      }
+  methods: {
+
+    loginFormRef() {
+      //重置
+      this.$refs.loginFormRef.resetFields();
+    },
+
+    Login() {
+      this.$refs.loginFormRef.validate(async (valid) => {
+        //   console.log(valid);
+        if (!valid) {
+          return;
+        }
+        const { data: res } = await this.$http.post("login", this.loginForm);
+
+        if (res.meta.status !== 200) return this.$message.error("登录失败");
+        this.$message.success("登录成功");
+        console.log(res);
+        //保存token
+        window.sessionStorage.setItem('token',res.data.token);
+        this.$router.push({path:'/home'})
+      });
+
+    },
   },
   //生命周期 - 创建完成（访问当前this实例）
   created() {},
