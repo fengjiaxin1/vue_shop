@@ -16,4 +16,6 @@ yarn build
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+通过axios请求拦截器添加token，保证拥有获取数据的权限
