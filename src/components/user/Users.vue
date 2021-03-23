@@ -351,17 +351,20 @@ export default {
           cancelButtonText: "取消",
           type: "warning",
         }
-      )
-        .catch(err => err);
-        //确认删除返回confirm
-        //取消就返回cancel
-        if(confirmR!=='confirm'){return this.$message.info('已取消了删除')}
+      ).catch((err) => err);
+      //确认删除返回confirm
+      //取消就返回cancel
+      if (confirmR !== "confirm") {
+        return this.$message.info("已取消了删除");
+      }
 
-       const {data:res} =  await this.$http.delete(`users/${id}`)
-       if(res.meta.status!==200){return  this.$message.error('删除失败')}
+      const { data: res } = await this.$http.delete(`users/${id}`);
+      if (res.meta.status !== 200) {
+        return this.$message.error("删除失败");
+      }
 
-        this.$message.success('删除成功')
-        this.getUsersList();
+      this.$message.success("删除成功");
+      this.getUsersList();
     },
   },
   //生命周期 - 挂载完成（访问DOM元素）
