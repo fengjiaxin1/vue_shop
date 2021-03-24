@@ -42,7 +42,7 @@ export default {
         return this.$message.error("获取权限列表失败");
       }
       this.rightsList = res.data;
-      console.log(res.data);
+      //console.log(res.data);
     },
   },
   //生命周期 - 挂载完成（访问DOM元素）
