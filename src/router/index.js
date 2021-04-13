@@ -1,13 +1,23 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../components/home.vue'
-import Welcome from '../components/Welcome.vue'
-import Users from '../components/user/Users.vue'
-import Rights from '../components/power/Rights.vue'
-import Roles from '../components/power/Roles.vue'
-import Cate from '../components/goods/Cate.vue'
-import Params from '../components/goods/Params.vue'
-const Login = () => import('../components/login.vue')
+const Login = () => import(/* webpackChunkName: "Login_Home_Welcome" */'../components/login.vue')
+const Home = () => import(/* webpackChunkName: "Login_Home_Welcome" */ '../components/home.vue')
+
+const Welcome = () => import(/* webpackChunkName: "Login_Home_Welcome" */ '../components/Welcome.vue')
+
+const Users = () => import(/* webpackChunkName: "Users_rights_Roles" */ '../components/user/Users.vue')
+const Rights = () => import(/* webpackChunkName: "Users_rights_Roles" */'../components/power/Rights.vue')
+const Roles = () => import(/* webpackChunkName: "Users_rights_Roles" */'../components/power/Roles.vue')
+
+const Cate = () => import(/* webpackChunkName: "Cate_Params" */'../components/goods/Cate.vue')
+const Params = () => import(/* webpackChunkName: "Cate_Params" */'../components/goods/Params.vue')
+
+const GoodsList = () => import(/* webpackChunkName: "GoodList_Add" */'../components/goods/List.vue')
+const Add = () => import(/* webpackChunkName: "GoodList_Add" */'../components/goods/add.vue')
+
+const Order = () => import(/* webpackChunkName: "Order_Report" */'../components/order/Order.vue')
+const Report = () => import(/* webpackChunkName: "Order_Report" */'../components/report/Report.vue')
+
 
 
 Vue.use(VueRouter)
@@ -27,7 +37,7 @@ const routes = [
     component: Home,
     redirect: '/Welcome',
     children:[
-      {
+    {
       path: '/Welcome',
       component: Welcome,
     },
@@ -50,6 +60,22 @@ const routes = [
     {
       path:'/Params',
       component:Params,
+    },
+    {
+      path:'/goods',
+      component:GoodsList,
+    },
+    {
+      path:'/goods/add',
+      component:Add,
+    },
+    {
+      path:'/orders',
+      component:Order,
+    },
+    {
+      path:'/reports',
+      component:Report,
     },
   ]
   },

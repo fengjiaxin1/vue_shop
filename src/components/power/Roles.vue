@@ -329,6 +329,7 @@ export default {
       }
       this.editRoleForm = res.data;
       this.editRoleDialogVisible = true;
+      console.log(this.editRoleForm);
     },
     //提交修改的角色信息
     putEditRoleForm() {
@@ -348,9 +349,10 @@ export default {
     },
     //监听编辑角色对话框关闭事件
     editRoleFormDialogClose() {
-      this.$refs.editRoleFormRef.resetFields();
-      this.editRoleForm.roleName = "";
-      this.editRoleForm.roleDesc = "";
+      console.log(this.editRoleForm);
+      // this.$refs.editRoleFormRef.resetFields();
+      // this.editRoleForm.roleName = "";
+      // this.editRoleForm.roleDesc = "";
     },
     //删除角色
     async removeRoleById(id) {
